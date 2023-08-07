@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/welcome.css">
+    <link rel="stylesheet" href="./css/todolist.css">
+</head>
+<body>
+    <div id="root">
+        <div class="container">
+            <aside class="sidebar">
+                <h1 class="sidebar-logo">MENU</h1>
+                <ul class="sidebar-menu-list">
+                    <li class="menu-items start-menu isMenuSelected" onclick="sidebarMenuOnClickHandle(this)"><span>Start</span><i class="fa-solid fa-play"></i></li>
+                    <li class="menu-items todolist-menu" onclick="sidebarMenuOnClickHandle(this)"><span>ToDoList</span><i class="fa-regular fa-square-check"></i></li>
+                </ul>
+            </aside>
+            <main class="main-container">
+                <div class="welcome-page-container">
+                    <h1 class="welcome-page-title">TODOLIST</h1>
+                    <button class="start-btn" onclick="gotoWriteOnClickHandle()">Start</button>
+                </div>
+                <div class="todolist-page-container invisible">
+                    <header class="todolist-header-container">
+                        <div>
+                            <button class="btn"><i class="fa-solid fa-chevron-left"></i></button>
+                        </div>
+                        <div class="todolist-date-items">
+                            <button class="date-btn btn">
+                                <div class="todolist-date-week">
+                                    <label for="">TUESDAY, </label>
+                                </div>
+                                <div class="todolist-date-day">
+                                    <label for="">August 08th</label>
+                                </div>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="btn"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </header>
+                    <main class="todolist-main-container">
+                        <div class="filter-buttons">
+                            <button class="btn all-btn">all</button>
+                            <button class="btn complete-btn">complete</button>
+                            <button class="btn incomplete-btn">incomplete</button>
+                        </div>
+                        <ul class="todolist-ul-container">
+                            <li class="todolist-items">
+                                <div class="item-left">
+                                    <input type="checkbox" id="complet-chkbox1" 
+                                        class="complet-chkboxs">
+                                    <label for="complet-chkbox1"></label>
+                                </div>
+                                <div class="item-center">
+                                    <pre class="todolist-content">todo 내용</pre>
+                                </div>
+                                <div class="item-right">
+                                    <p class="todolist-deadline">마감일</p>
+                                    <div class="todolist-item-buttons">
+                                        <button class="btn btn-edit"><i class="fa-solid fa-pen"></i></button>
+                                        <button class="btn btn-remove"><i class="fa-solid fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </main>
+                    <footer class="todolist-footer-container">
+                        <div>
+                            <label for="" class="total-task">0 TASKS</label>
+                        </div>
+                        <div>
+                            <button class="btn">ADD NEW +</button>
+                        </div>
+                    </footer>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="./js/routes.js"></script>
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/welcome.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+.sidebar {
+    transition: left 0.5s ease;
+    position: absolute;
+    top: 30px;
+    left: -100px;
+    border: 1px solid #dbdbdb;
+    border-left: none;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    box-shadow: 0px 0px 10px #dbdbdb;
+    width: 150px;
+    height: 640px;
+    background-color: white;
+}
+
+.sidebar:hover {
+    left: 0px;
+}
+
+.sidebar-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 20px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: 700px;
+}
+
+.sidebar i {
+    padding: 20px;
+}
+
+.sidebar-menu-list {
+
+}
+
+.menu-items {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-left: 30px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #dbdbdb;
+    cursor: pointer;
+}
+
+.menu-items * {
+    color: #dbdbdb;
+}
+
+.menu-items:hover {
+    background-color: #eee;
+}
+
+.menu-items:active {
+    background-color: #dbdbdb;
+}
+
+.isMenuSelected * {
+    color: #8493FF;
+    font-weight: 700;
+}
