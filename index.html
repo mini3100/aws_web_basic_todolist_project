@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/sidebar.css">
     <link rel="stylesheet" href="./css/welcome.css">
     <link rel="stylesheet" href="./css/todolist.css">
+    <link rel="stylesheet" href="./css/modal.css">
 </head>
 <body>
     <div id="root">
@@ -22,11 +23,11 @@
                 </ul>
             </aside>
             <main class="main-container">
-                <div class="welcome-page-container">
+                <div class="welcome-page-container invisible">
                     <h1 class="welcome-page-title">TODOLIST</h1>
                     <button class="start-btn" onclick="gotoWriteOnClickHandle()">Start</button>
                 </div>
-                <div class="todolist-page-container invisible">
+                <div class="todolist-page-container">
                     <header class="todolist-header-container">
                         <div>
                             <button class="btn"><i class="fa-solid fa-chevron-left"></i></button>
@@ -52,41 +53,46 @@
                             <button class="btn incomplete-btn">incomplete</button>
                         </div>
                         <ul class="todolist-ul-container">
-                            <li class="todolist-items">
-                                <div class="todolist-top">
-                                    <div class="item-left">
-                                        <input type="checkbox" id="complete-chkbox1" 
-                                            class="complete-chkbox checked">
-                                        <label for="complete-chkbox1"></label>
-                                    </div>
-                                    <div class="item-center">
-                                        <pre class="todolist-content">todo 내용</pre>
-                                    </div>
-                                    <div class="item-right">
-                                        <p class="todolist-deadline">마감일</p>
-                                    </div>
-                                </div>
-                                <div class="todolist-item-buttons">
-                                    <button class="btn btn-edit"><i class="fa-solid fa-pen"></i></button>
-                                    <button class="btn btn-remove"><i class="fa-solid fa-trash"></i></button>
-                                </div>
-                            </li>
+                            <!-- todolist -->
                         </ul>
                     </main>
                     <footer class="todolist-footer-container">
                         <div>
-                            <label for="" class="total-task">0 TASKS</label>
+                            <label class="total-task">0</label> TASKS
                         </div>
                         <div>
-                            <button class="btn">ADD NEW +</button>
+                            <button class="btn" onclick="addNewBtnOnClickHandle();">ADD NEW <i class="fa-solid fa-plus"></i></button>
                         </div>
                     </footer>
+                    <div class="modal invisible">
+                        <div class="modal-container">
+                            <header class="modal-header">
+                                <h1 class="modal-title">
+                                    title
+                                </h1>
+                            </header>
+                            <main class="modal-main">
+                                <p class="modal-message">
+                                    modal message
+                                </p>
+                                <input type="text" class="text-input w-f">
+                            </main>
+                            <footer class="modal-footer">
+                                <button class="btn" onclick="confirmBtnOnClickHandle(); closeModal();">확인</button>
+                                <button class="btn" onclick="closeModal();">닫기</button>
+                            </footer>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
     </div>
+    <script src="./js/index.js"></script>
+    <script src="./js/utils.js"></script>
     <script src="./js/routes.js"></script>
     <script src="./js/sidebar.js"></script>
     <script src="./js/welcome.js"></script>
+    <script src="./js/todolist.js"></script>
+    <script src="./js/modal.js"></script>
 </body>
 </html>

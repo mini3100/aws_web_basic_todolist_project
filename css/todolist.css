@@ -38,7 +38,7 @@
 .filter-buttons {
     display: flex;
     justify-content: end;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid #d2d7ff;
     padding: 5px;
 }
 
@@ -57,13 +57,13 @@
 }
 
 .todolist-ul-container::-webkit-scrollbar-thumb {
-    background-color: #dbdbdb;
+    background-color: #d2d7ff;
     border-radius: 3px;
 }
 
 .todolist-items {
     margin: 10px 0px;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid #d2d7ff;
     padding: 10px;
 }
 
@@ -81,7 +81,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #dbdbdb;
+    border: 1px solid #d2d7ff;
     border-radius: 4px;
     width: 20px;
     height: 20px;
@@ -113,7 +113,8 @@
     display: flex;
     justify-content: flex-end;
     padding: 5px 10px;
-    width: 100px;
+    font-weight: 200;
+    width: 150px;
 }
 
 .todolist-item-buttons {
@@ -127,7 +128,7 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 15px;
-    border-top: 1px solid #dbdbdb;
+    border-top: 1px solid #d2d7ff;
     padding: 20px;
     padding-bottom: 0px;
 }
