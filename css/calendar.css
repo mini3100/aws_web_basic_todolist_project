@@ -1,0 +1,154 @@
+.calendar {
+    transition: right 0.5s ease;
+    position: absolute;
+    right: 285px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    padding: 10px;
+    width: 550px;
+    height: 720px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.isCalendarOpen-calendar {
+    right: 0px;
+}
+
+.isCalendarOpen-container {
+    left: 0px;
+}
+
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f3f7ff;
+    width: 490px;
+    height: 660px;
+}
+
+.calendar-head-container {
+    width: 100%;
+}
+
+.calendar-head-container h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #d2d7ff;
+    padding-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.calendar-main-container {
+    height: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.calendar-main-container > div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+}
+
+td {
+    font-size: 15px;
+    width: 50px;
+    height: 50px;
+}
+
+.calendar-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.year-month-tr {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.year-month-tr>td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: 500;
+    width: 100%;
+}
+
+.year-month-tr>.today-btn-td {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 20px;
+}
+
+.week-tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+    width: 450px;
+}
+
+.calendar-table>thead>tr:last-child>th {
+    width: 60px;
+    font-weight: 500;
+}
+
+.calendar-table>tbody>tr>td>p {
+    height: 60px;
+    width: 60px;
+    border-radius: 14px;
+    transition-duration: .2s;
+    line-height: 60px;
+    margin: 2.5px;
+    display: block;
+    text-align: center;
+}        
+
+.pastDay {
+    color: lightgray;
+    cursor: pointer;
+}
+
+.today {
+    background-color: #ddc3ff;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.futureDay {
+    cursor: pointer;
+}
+.futureDay:hover{
+    background-color: #eee;
+}
+
+.pastDay,
+.futureDay {
+    background-color: white;
+}
+
+.pastDay.choiceDay,
+.futureDay.choiceDay,
+.today.choiceDay {
+    background: #b3bbff;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/welcome.css">
     <link rel="stylesheet" href="./css/todolist.css">
     <link rel="stylesheet" href="./css/modal.css">
-    <link rel="stylesheet" href="./css/calender.css">
+    <link rel="stylesheet" href="./css/calendar.css">
 </head>
 <body>
     <div id="root">
@@ -72,30 +72,32 @@
                     </div>
                 </main>
             </div>
-            <div class="calender">
+            <div class="calendar">
                 <div class="calendar-container">
-                    <header class="calender-head-container">
-    
-                    </header>                
-                    <main class="calender-main-container">
+                    <header class="calendar-head-container">
+                        <h1>Calendar</h1>
+                    </header>
+                    <main class="calendar-main-container">
                         <table class="calendar-table">
                             <thead>
-                                <tr>
-                                    <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+                                <tr class="year-month-tr">
+                                    <td></td>
+                                    <td onClick="prevCalendar();" style="cursor:pointer;"><i class="fa-solid fa-chevron-left"></td>
                                     <td colspan="5">
-                                        <span id="calYear"></span>년
+                                        <span id="calYear"></span>년&nbsp;
                                         <span id="calMonth"></span>월
                                     </td>
-                                    <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+                                    <td onClick="nextCalendar();" style="cursor:pointer;"><i class="fa-solid fa-chevron-right"></td>
+                                    <td class="today-btn-td"><button class="btn">today</button></td>
                                 </tr>
-                                <tr>
-                                    <td>일</td>
-                                    <td>월</td>
-                                    <td>화</td>
-                                    <td>수</td>
-                                    <td>목</td>
-                                    <td>금</td>
-                                    <td>토</td>
+                                <tr class="week-tr">
+                                    <th>SUN</th>
+                                    <th>MON</th>
+                                    <th>TUE</th>
+                                    <th>WED</th>
+                                    <th>THU</th>
+                                    <th>FRI</th>
+                                    <th>SAT</th>
                                 </tr>
                             </thead>
                     
@@ -114,6 +116,6 @@
     <script src="./js/welcome.js"></script>
     <script src="./js/todolist.js"></script>
     <script src="./js/modal.js"></script>
-    <script src="./js/calender.js"></script>
+    <script src="./js/calendar.js"></script>
 </body>
 </html>

@@ -1,13 +1,13 @@
 const dateBtnOnClickHandle = () => {
     const container = document.querySelector(".container");
-    const calender = document.querySelector(".calender");
+    const calendar = document.querySelector(".calendar");
 
-    if (container.classList.contains("isCalenderOpen-container")) {
-        container.classList.remove("isCalenderOpen-container");
-        calender.classList.remove("isCalenderOpen-calender");
+    if (container.classList.contains("isCalendarOpen-container")) {
+        container.classList.remove("isCalendarOpen-container");
+        calendar.classList.remove("isCalendarOpen-calendar");
     } else {
-        container.classList.add("isCalenderOpen-container");
-        calender.classList.add("isCalenderOpen-calender");
+        container.classList.add("isCalendarOpen-container");
+        calendar.classList.add("isCalendarOpen-calendar");
     }
 }
 
