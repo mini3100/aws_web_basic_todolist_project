@@ -11,80 +11,100 @@
     <link rel="stylesheet" href="./css/welcome.css">
     <link rel="stylesheet" href="./css/todolist.css">
     <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/calender.css">
 </head>
 <body>
     <div id="root">
-        <div class="container">
-            <aside class="sidebar">
-                <h1 class="sidebar-logo">MENU</h1>
-                <ul class="sidebar-menu-list">
-                    <li class="menu-items start-menu isMenuSelected" onclick="sidebarMenuOnClickHandle(this)"><span>Start</span><i class="fa-solid fa-play"></i></li>
-                    <li class="menu-items todolist-menu" onclick="sidebarMenuOnClickHandle(this)"><span>ToDoList</span><i class="fa-regular fa-square-check"></i></li>
-                </ul>
-            </aside>
-            <main class="main-container">
-                <div class="welcome-page-container">
-                    <h1 class="welcome-page-title">TODOLIST</h1>
-                    <button class="start-btn" onclick="gotoWriteOnClickHandle()">Start</button>
-                </div>
-                <div class="todolist-page-container invisible">
-                    <header class="todolist-header-container">
-                        <div>
-                            <button class="btn"><i class="fa-solid fa-chevron-left"></i></button>
-                        </div>
-                        <div class="todolist-date-items">
-                            <button class="date-btn btn">
-                                <div class="todolist-date-week">
-                                    <label for="">TUESDAY, </label>
-                                </div>
-                                <div class="todolist-date-day">
-                                    <label for="">August 08th</label>
-                                </div>
-                            </button>
-                        </div>
-                        <div>
-                            <button class="btn"><i class="fa-solid fa-chevron-right"></i></button>
-                        </div>
-                    </header>
-                    <main class="todolist-main-container">
-                        <div class="filter-buttons">
-                            <button class="btn all-btn">all</button>
-                            <button class="btn complete-btn">complete</button>
-                            <button class="btn incomplete-btn">incomplete</button>
-                        </div>
-                        <ul class="todolist-ul-container">
-                            <!-- todolist -->
-                        </ul>
-                    </main>
-                    <footer class="todolist-footer-container">
-                        <div>
-                            <label class="total-task">0</label> TASKS
-                        </div>
-                        <div>
-                            <button class="btn" onclick="addNewBtnOnClickHandle();">ADD NEW <i class="fa-solid fa-plus"></i></button>
-                        </div>
-                    </footer>
-                    <div class="modal invisible">
-                        <div class="modal-container">
-                            <header class="modal-header">
-                                <h1 class="modal-title">
-                                    title
-                                </h1>
-                            </header>
-                            <main class="modal-main">
-                                <p class="modal-message">
-                                    modal message
-                                </p>
-                                <input type="text" class="text-input w-f">
-                            </main>
-                            <footer class="modal-footer">
-                                <button class="btn" onclick="confirmBtnOnClickHandle(); closeModal();">확인</button>
-                                <button class="btn" onclick="closeModal();">닫기</button>
-                            </footer>
+        <div class="containers">
+            <div class="container">
+                <aside class="sidebar">
+                    <h1 class="sidebar-logo">MENU</h1>
+                    <ul class="sidebar-menu-list">
+                        <li class="menu-items start-menu isMenuSelected" onclick="sidebarMenuOnClickHandle(this)"><span>Start</span><i class="fa-solid fa-play"></i></li>
+                        <li class="menu-items todolist-menu" onclick="sidebarMenuOnClickHandle(this)"><span>ToDoList</span><i class="fa-regular fa-square-check"></i></li>
+                    </ul>
+                </aside>
+                <main class="main-container">
+                    <div class="welcome-page-container">
+                        <h1 class="welcome-page-title">TODOLIST</h1>
+                        <button class="start-btn" onclick="gotoWriteOnClickHandle()">Start</button>
+                    </div>
+                    <div class="todolist-page-container invisible">
+                        <header class="todolist-header-container">
+                            <div>
+                                <button class="btn"><i class="fa-solid fa-chevron-left"></i></button>
+                            </div>
+                            <div class="todolist-date-items">
+                                <button class="date-btn btn" onclick="dateBtnOnClickHandle();">
+                                    <div class="todolist-date-week">
+                                        <label for="">TUESDAY, </label>
+                                    </div>
+                                    <div class="todolist-date-day">
+                                        <label for="">August 08th</label>
+                                    </div>
+                                </button>
+                            </div>
+                            <div>
+                                <button class="btn"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                        </header>
+                        <main class="todolist-main-container">
+                            <div class="filter-buttons">
+                                <button class="btn all-btn filter-selected" onclick="filterBtnOnClickHandle(this)">all</button>
+                                <button class="btn incomplete-btn" onclick="filterBtnOnClickHandle(this)">incomplete</button>
+                                <button class="btn complete-btn" onclick="filterBtnOnClickHandle(this)">complete</button>
+                            </div>
+                            <ul class="todolist-ul-container">
+                                <!-- todolist -->
+                            </ul>
+                        </main>
+                        <footer class="todolist-footer-container">
+                            <div>
+                                <label class="total-task">0</label> TASKS
+                            </div>
+                            <div>
+                                <button class="btn" onclick="addNewBtnOnClickHandle();">ADD NEW <i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </footer>
+                        <div class="modal invisible">
+                            <!-- modal -->
                         </div>
                     </div>
+                </main>
+            </div>
+            <div class="calender">
+                <div class="calendar-container">
+                    <header class="calender-head-container">
+    
+                    </header>                
+                    <main class="calender-main-container">
+                        <table class="calendar-table">
+                            <thead>
+                                <tr>
+                                    <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
+                                    <td colspan="5">
+                                        <span id="calYear"></span>년
+                                        <span id="calMonth"></span>월
+                                    </td>
+                                    <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
+                                </tr>
+                                <tr>
+                                    <td>일</td>
+                                    <td>월</td>
+                                    <td>화</td>
+                                    <td>수</td>
+                                    <td>목</td>
+                                    <td>금</td>
+                                    <td>토</td>
+                                </tr>
+                            </thead>
+                    
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </main>
                 </div>
-            </main>
+            </div>
         </div>
     </div>
     <script src="./js/index.js"></script>
@@ -94,5 +114,6 @@
     <script src="./js/welcome.js"></script>
     <script src="./js/todolist.js"></script>
     <script src="./js/modal.js"></script>
+    <script src="./js/calender.js"></script>
 </body>
 </html>

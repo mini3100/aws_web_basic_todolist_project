@@ -1,3 +1,8 @@
+// 필터링
+const filterBtnOnClickHandle = (target) => {
+    TodoListService.getInstance().filterTodoList(target.innerHTML);
+}
+
 // todo 추가 모달
 const addNewBtnOnClickHandle = () => {
     addModal();
@@ -17,7 +22,8 @@ const checkedOnChangeHandle = (target) => {
 
 // todo 삭제 버튼 클릭 이벤트
 const deleteBtnOnClickHandle = (target) => {
-    TodoListService.getInstance().removeTodo(target.value);
+    deleteModal(TodoListService.getInstance().getTodoById(target.value));
+    openModal();
 }
 
 // todo 객체 생성 함수
@@ -48,6 +54,9 @@ class TodoListService {
 
     todoList = null;
     todoIndex = 1;
+    
+    completeTodoList = null;
+    incompleteTodoList = null;
 
     constructor() {
         this.loadTodoList();
@@ -66,6 +75,31 @@ class TodoListService {
     getTodoById(id) {
         //filter로 해당 id인 것의 todo 리스트를 받아옴 -> 1개니까 0번 index를 받아오면 됨.
         return this.todoList.filter(todo => todo.id === parseInt(id))[0];
+    }
+
+    filterTodoList(filterItem) {
+        const todolistUlContainer = document.querySelector(".todolist-ul-container");
+        const allBtn = document.querySelector(".all-btn");
+        const completeBtn = document.querySelector(".complete-btn");
+        const incompleteBtn = document.querySelector(".incomplete-btn");
+        allBtn.classList.remove("filter-selected");
+        completeBtn.classList.remove("filter-selected");
+        incompleteBtn.classList.remove("filter-selected");
+        switch(filterItem) {
+            case "all":
+                allBtn.classList.add("filter-selected");
+                todolistUlContainer.innerHTML = this.incompleteTodoList.join("");
+                todolistUlContainer.innerHTML += this.completeTodoList.join("");
+                break;
+            case "complete":
+                completeBtn.classList.add("filter-selected");
+                todolistUlContainer.innerHTML = this.completeTodoList.join("");
+                break;
+            case "incomplete":
+                incompleteBtn.classList.add("filter-selected");
+                todolistUlContainer.innerHTML = this.incompleteTodoList.join("");
+                break;
+        }
     }
 
     addTodo(todoObj) {
@@ -113,8 +147,8 @@ class TodoListService {
 
     updateTodoList() {
         const todolistUlContainer = document.querySelector(".todolist-ul-container");
-        const completeTodoList = new Array();
-        const incompleteTodoList = new Array();
+        this.completeTodoList = new Array();
+        this.incompleteTodoList = new Array();
         this.todoList.forEach(todo => {
             const todoli = `
                 <li class="todolist-items">
@@ -139,17 +173,14 @@ class TodoListService {
                 </li>
             `;
             if(todo.completeStatus) {
-                completeTodoList.push(todoli);
+                this.completeTodoList.push(todoli);
             } else {
-                incompleteTodoList.push(todoli);
+                this.incompleteTodoList.push(todoli);
             }
             
         });
 
-        todolistUlContainer.innerHTML = incompleteTodoList.join("");
-        todolistUlContainer.innerHTML += completeTodoList.join("");
-        // map : 새로운 list로 만들어 줌.
-        // join("")으로 , 로 이어진 리스트들을 , 없이 이어줌
+        this.filterTodoList(document.querySelector(".filter-selected").innerHTML);
 
         // todo 개수 업데이트
         const totalTask = document.querySelector(".total-task");

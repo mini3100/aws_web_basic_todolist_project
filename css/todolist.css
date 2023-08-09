@@ -38,17 +38,22 @@
 .filter-buttons {
     display: flex;
     justify-content: end;
+    margin-bottom: 15px;
     border-bottom: 1px solid #d2d7ff;
     padding: 5px;
 }
 
 .filter-buttons button {
-    font-weight: 400;
+    font-weight: 300;
+}
+
+.filter-buttons .filter-selected {
+    font-weight: 700;
 }
 
 .todolist-ul-container {
     padding-right: 5px;
-    height: 500px;
+    height: 510px;
     overflow-y: scroll;
 }
 
@@ -62,9 +67,14 @@
 }
 
 .todolist-items {
-    margin: 10px 0px;
-    border-bottom: 1px solid #d2d7ff;
+    border-radius: 18px;
     padding: 10px;
+    background-color: #f3f7ff;
+}
+
+/* 마지막 li가 아닌 것에만 margin bottom 넣어주기 */
+.todolist-items:not(.todolist-ul-container :nth-last-child(1)){
+    margin-bottom: 10px;
 }
 
 .todolist-top {
@@ -83,6 +93,7 @@
     align-items: center;
     border: 1px solid #d2d7ff;
     border-radius: 4px;
+    background-color: white;
     width: 20px;
     height: 20px;
     cursor: pointer;
@@ -96,10 +107,6 @@
 
 .complete {
     text-decoration: line-through;
-}
-
-.item-left {
-    
 }
 
 .item-center {

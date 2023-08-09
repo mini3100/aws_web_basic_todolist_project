@@ -1,0 +1,91 @@
+.calender {
+    transition: right 0.5s ease;
+    position: absolute;
+    right: 285px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    padding: 20px;
+    width: 550px;
+    height: 720px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.isCalenderOpen-calender {
+    right: 0px;
+}
+
+.isCalenderOpen-container {
+    left: 0px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+
+.calender-main-container {
+    height: auto;
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #d2d7ff;
+    border-radius:5px;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+}
+
+.calendar-table {
+    text-align: center;
+}
+
+.calendar-table>thead>tr:first-child>td {
+    font-family: 'Questrial', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.calendar-table>thead>tr:last-child>td {
+    font-family: 'Questrial', sans-serif;
+    font-weight: 600;     
+}
+
+.calendar-table>tbody>tr>td>p {
+    font-family: 'Montserrat', sans-serif;
+    height: 45px;
+    width: 45px;
+    border-radius: 45px;
+    transition-duration: .2s;
+    line-height: 45px;
+    margin: 2.5px;
+    display: block;
+    text-align: center;
+}        
+
+.pastDay {
+    color: lightgray;
+    cursor: pointer;
+}
+
+.today {
+    background-color: #F5D042;            
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.futureDay {
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+.futureDay:hover{
+    background:#eee;
+}
+
+.pastDay.choiceDay,
+.futureDay.choiceDay,
+.today.choiceDay {
+    background: #0A174E;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}

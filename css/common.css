@@ -6,18 +6,27 @@
 }
 
 html {
-    background-color: #fafafa;
+    background-color: #f8f8f8;
+}
+
+.containers {
+    position: relative;
+    margin: 95px auto;
+    width: 1120px;
+    height: 720px;
 }
 
 .container {
-    position: relative;
-    margin: 100px auto;
+    transition: left 0.5s ease;
+    position: absolute;
+    z-index: 1;
+    left: 285px;
     border: 1px solid #dbdbdb;
     border-radius: 4px;
     padding: 10px;
     padding-left: 60px;
     width: 550px;
-    height: 700px;
+    height: 720px;
     background-color: white;
     overflow: hidden;
 }
@@ -55,6 +64,7 @@ html {
 
 .text-input {
     outline: none;
+    margin-top: 10px;
     border: 1px solid #d2d7ff;
     border-radius: 4px;
     padding: 5px 10px;

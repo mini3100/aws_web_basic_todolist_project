@@ -38,6 +38,10 @@ const editConfirmOnKeyUpHandle = (event, target) => {
     }
 }
 
+const deleteConfirmBtnOnClickHandle = (id) => {
+    TodoListService.getInstance().removeTodo(id);
+}
+
 const editTodo = (id) => {
     const newTodoContent = document.querySelector(".modal-main .text-input").value;
     const todo = TodoListService.getInstance().getTodoById(id);
@@ -52,14 +56,18 @@ const editTodo = (id) => {
 }
 
 const addModal = () => {
-    createModal("Add Todo", "Todo를 작성하세요.", "add", null);
+    createModal("Add Todo", "Todo를 작성하세요.", "add", null, null);
 }
 
 const editModal = (todo) => {
-    createModal("Edit todo", "Todo를 수정하세요.", "edit", todo)
+    createModal("Edit todo", "Todo를 수정하세요.", "edit", todo, null)
 }
 
-const createModal = (title, message, event, todo) => {
+const deleteModal = (todo) => {
+    createModal("Delete todo", "정말 삭제하시겠습니까?", "delete", todo, "invisible");
+}
+
+const createModal = (title, message, event, todo, isDelete) => {
     const modal = document.querySelector(".modal");
     modal.innerHTML = `
         <div class="modal-container">
@@ -72,7 +80,7 @@ const createModal = (title, message, event, todo) => {
                 <p class="modal-message">
                     ${message}
                 </p>
-                <input type="text" class="text-input w-f" onkeyup="${event}ConfirmOnKeyUpHandle(event, this);" value="${!!todo?.id? todo.todoContent : ""}" id=${!!todo?.id? todo.id : ""}>
+                <input type="text" class="text-input w-f ${isDelete}" onkeyup="${event}ConfirmOnKeyUpHandle(event, this);" value="${!!todo?.id? todo.todoContent : ""}" id=${!!todo?.id? todo.id : ""}>
             </main>
             <footer class="modal-footer">
                 <button class="btn" onclick="${event}ConfirmBtnOnClickHandle(${!!todo?.id? todo.id : ""}); closeModal();">확인</button>
