@@ -113,8 +113,10 @@ class TodoListService {
 
     updateTodoList() {
         const todolistUlContainer = document.querySelector(".todolist-ul-container");
-        todolistUlContainer.innerHTML = this.todoList.map(todo => {
-            return `
+        const completeTodoList = new Array();
+        const incompleteTodoList = new Array();
+        this.todoList.forEach(todo => {
+            const todoli = `
                 <li class="todolist-items">
                     <div class="todolist-top">
                         <div class="item-left">
@@ -136,7 +138,16 @@ class TodoListService {
                     </div>
                 </li>
             `;
-        }).join("");
+            if(todo.completeStatus) {
+                completeTodoList.push(todoli);
+            } else {
+                incompleteTodoList.push(todoli);
+            }
+            
+        });
+
+        todolistUlContainer.innerHTML = incompleteTodoList.join("");
+        todolistUlContainer.innerHTML += completeTodoList.join("");
         // map : 새로운 list로 만들어 줌.
         // join("")으로 , 로 이어진 리스트들을 , 없이 이어줌
 
