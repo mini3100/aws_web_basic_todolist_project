@@ -35,7 +35,7 @@ const generateTodoObj = () => {
     const todoObj = {
         id: 0,
         todoContent: todoContent,
-        todoDate: DateUtils.toStringByFormatting(new Date()),
+        todoDate: DateUtils.toStringByFormatting(CalendarService.getInstance().choiceDay),
         completeStatus: false
     };
 
@@ -150,34 +150,35 @@ class TodoListService {
         this.completeTodoList = new Array();
         this.incompleteTodoList = new Array();
         this.todoList.forEach(todo => {
-            const todoli = `
-                <li class="todolist-items">
-                    <div class="todolist-top">
-                        <div class="item-left">
-                            <input type="checkbox" id="complete-chkbox${todo.id}" 
-                                class="complete-chkbox" ${todo.completeStatus ? "checked" : ""} 
-                                value="${todo.id}" onchange="checkedOnChangeHandle(this)">
-                            <label for="complete-chkbox${todo.id}"></label>
+            if(todo.todoDate === DateUtils.toStringByFormatting(CalendarService.getInstance().choiceDay)){
+                const todoli = `
+                    <li class="todolist-items">
+                        <div class="todolist-top">
+                            <div class="item-left">
+                                <input type="checkbox" id="complete-chkbox${todo.id}" 
+                                    class="complete-chkbox" ${todo.completeStatus ? "checked" : ""} 
+                                    value="${todo.id}" onchange="checkedOnChangeHandle(this)">
+                                <label for="complete-chkbox${todo.id}"></label>
+                            </div>
+                            <div class="item-center">
+                                <pre class="todolist-content ${todo.completeStatus ? "complete" : ""}" value="${todo.id}">${todo.todoContent}</pre>
+                            </div>
+                            <div class="item-right">
+                                <p class="todolist-deadline">${todo.todoDate}</p>
+                            </div>
                         </div>
-                        <div class="item-center">
-                            <pre class="todolist-content ${todo.completeStatus ? "complete" : ""}" value="${todo.id}">${todo.todoContent}</pre>
+                        <div class="todolist-item-buttons">
+                            <button class="btn btn-edit" value="${todo.id}" onclick="editBtnOnClickHandle(this);"><i class="fa-solid fa-pen"></i></button>
+                            <button class="btn btn-remove" value="${todo.id}" onclick="deleteBtnOnClickHandle(this);"><i class="fa-solid fa-trash"></i></button>
                         </div>
-                        <div class="item-right">
-                            <p class="todolist-deadline">${todo.todoDate}</p>
-                        </div>
-                    </div>
-                    <div class="todolist-item-buttons">
-                        <button class="btn btn-edit" value="${todo.id}" onclick="editBtnOnClickHandle(this);"><i class="fa-solid fa-pen"></i></button>
-                        <button class="btn btn-remove" value="${todo.id}" onclick="deleteBtnOnClickHandle(this);"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                </li>
-            `;
-            if(todo.completeStatus) {
-                this.completeTodoList.push(todoli);
-            } else {
-                this.incompleteTodoList.push(todoli);
+                    </li>
+                `;
+                if(todo.completeStatus) {
+                    this.completeTodoList.push(todoli);
+                } else {
+                    this.incompleteTodoList.push(todoli);
+                }
             }
-            
         });
 
         this.filterTodoList(document.querySelector(".filter-selected").innerHTML);

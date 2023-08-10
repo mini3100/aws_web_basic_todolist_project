@@ -13,15 +13,19 @@ const dateBtnOnClickHandle = () => {
 
 const leftDateBtnOnClickHandle = () => {
     CalendarService.getInstance().prevDate();
+    TodoListService.getInstance().updateTodoList();
 }
 
 const rightDateBtnOnClickHandle = () => {
     CalendarService.getInstance().nextDate();
+    TodoListService.getInstance().updateTodoList();
 }
 
 const todayBtnOnClickHandle = ()  => {
     CalendarService.getInstance().nowMonth = new Date();
     CalendarService.getInstance().buildCalendar();
+    CalendarService.getInstance().choiceDate(document.querySelector(".today"));
+    TodoListService.getInstance().updateTodoList();
 }
 
 class CalendarService {
@@ -81,7 +85,7 @@ class CalendarService {
 
             newDIV.id = nowDay;
             newDIV.classList.add("day");
-            newDIV.onclick = function () { CalendarService.getInstance().choiceDate(this); }
+            newDIV.onclick = function () { CalendarService.getInstance().choiceDate(this); TodoListService.getInstance().updateTodoList(); }
 
             if (nowDay.getFullYear() == this.today.getFullYear() && nowDay.getMonth() == this.today.getMonth() && nowDay.getDate() == this.today.getDate()) { // 오늘인 경우           
                 newDIV.classList.add("today");
