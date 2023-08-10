@@ -67,7 +67,6 @@ class CalendarService {
     
             let nowColumn = nowRow.insertCell();        // 새 열을 추가하고
     
-    
             let newDIV = document.createElement("p");
             newDIV.innerHTML = this.leftPad(nowDay.getDate());        // 추가한 열에 날짜 입력
             nowColumn.appendChild(newDIV);
@@ -80,6 +79,7 @@ class CalendarService {
                 nowRow = tbody_Calendar.insertRow();    // 새로운 행 추가
             }
 
+            newDIV.id = nowDay;
             newDIV.classList.add("day");
             newDIV.onclick = function () { CalendarService.getInstance().choiceDate(this); }
 
@@ -87,14 +87,6 @@ class CalendarService {
                 newDIV.classList.add("today");
             } 
             
-            if (nowDay.getFullYear() == this.choiceDay.getFullYear() && nowDay.getMonth() == this.choiceDay.getMonth() && nowDay.getDate() == this.choiceDay.getDate()) {
-                newDIV.classList.add("choiceDay");
-            }
-            else if (nowDay.getFullYear() == this.choiceDay.getFullYear() && nowDay.getMonth() == this.choiceDay.getMonth() && nowDay.getDate() == this.choiceDay.getDate() - 1 && this.choiceDay.getDate() >= firstDate) { //선택한 날의 전날
-                newDIV.classList.add("prevDay");
-            } else if (nowDay.getFullYear() == this.choiceDay.getFullYear() && nowDay.getMonth() == this.choiceDay.getMonth() && nowDay.getDate() == this.choiceDay.getDate() + 1 && this.choiceDay.getDate() <= lastDate) { //선택한 날의 다음날
-                newDIV.classList.add("nextDay");
-            }
         }
     }
     
@@ -121,24 +113,25 @@ class CalendarService {
     }
 
     prevDate() {
-        if(this.choiceDay.getDate() - 1 < 1){
+        let prevDay = new Date(this.nowMonth.getFullYear(), this.nowMonth.getMonth(), this.choiceDay.getDate() - 1);
+        let lastDate = new Date(this.nowMonth.getFullYear(), this.nowMonth.getMonth(), 0);
+        if(prevDay.getTime() === lastDate.getTime()){
             this.prevMonth();
         }
-        this.choiceDay = new Date(this.nowMonth.getFullYear(), this.nowMonth.getMonth(), this.choiceDay.getDate() - 1);
-        console.log(this.choiceDay);
-        // choiceDay가 이전 달일 경우 .prevDay가 없음....
-        // 달을 이전 달로 넘겨야하는디....
-        let prevCell = document.querySelector(".prevDay");
-        !!prevCell?this.choiceDate(prevCell):null;
-        this.buildCalendar();
+        this.choiceDay.setDate(this.choiceDay.getDate() - 1);
+        let prevCell = document.getElementById(this.choiceDay);
+        this.choiceDate(prevCell);
     }
 
     nextDate() {
-        this.buildCalendar();
-        this.choiceDay = new Date(this.nowMonth.getFullYear(), this.nowMonth.getMonth(), this.choiceDay.getDate() + 1);
-        let nextCell = document.querySelector(".nextDay");
-        !!nextCell?this.choiceDate(nextCell):null;
-        this.buildCalendar();
+        let nextDay = new Date(this.nowMonth.getFullYear(), this.nowMonth.getMonth(), this.choiceDay.getDate() + 1);
+        let firstDate = new Date(this.nowMonth.getFullYear(), this.nowMonth.getMonth() + 1, 1);
+        if(nextDay.getTime() === firstDate.getTime()){
+            this.nextMonth();
+        }
+        this.choiceDay.setDate(this.choiceDay.getDate() + 1);
+        let nextCell = document.getElementById(this.choiceDay);
+        this.choiceDate(nextCell);
     }
     
     // input값이 한자리 숫자인 경우 앞에 '0' 붙혀주는 함수
