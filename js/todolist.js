@@ -35,7 +35,7 @@ const generateTodoObj = () => {
     const todoObj = {
         id: 0,
         todoContent: todoContent,
-        deadlineDate: DateUtils.toStringByFormatting(new Date()),
+        todoDate: DateUtils.toStringByFormatting(new Date()),
         completeStatus: false
     };
 
@@ -163,7 +163,7 @@ class TodoListService {
                             <pre class="todolist-content ${todo.completeStatus ? "complete" : ""}" value="${todo.id}">${todo.todoContent}</pre>
                         </div>
                         <div class="item-right">
-                            <p class="todolist-deadline">${todo.deadlineDate}</p>
+                            <p class="todolist-deadline">${todo.todoDate}</p>
                         </div>
                     </div>
                     <div class="todolist-item-buttons">

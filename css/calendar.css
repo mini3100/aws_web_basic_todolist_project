@@ -109,7 +109,8 @@ td {
     font-weight: 500;
 }
 
-.calendar-table>tbody>tr>td>p {
+.day,
+.today {
     height: 60px;
     width: 60px;
     border-radius: 14px;
@@ -118,12 +119,13 @@ td {
     margin: 2.5px;
     display: block;
     text-align: center;
-    box-shadow: 5px 5px 10px #e0e2f3;
-}        
-
-.pastDay {
-    color: lightgray;
+    box-shadow: 5px 5px 5px #e0e2f3;
     cursor: pointer;
+    background-color: white;
+}
+
+.day:hover{
+    background-color: #eee;
 }
 
 .today {
@@ -133,23 +135,18 @@ td {
     cursor: pointer;
 }
 
-.futureDay {
-    cursor: pointer;
-}
-.futureDay:hover{
-    background-color: #eee;
-}
-
-.pastDay,
-.futureDay {
-    background-color: white;
-}
-
-.pastDay.choiceDay,
-.futureDay.choiceDay,
+.day.choiceDay,
 .today.choiceDay {
     background: #b3bbff;
     color: #fff;
     font-weight: 600;
     cursor: pointer;
+}
+
+.sat {
+    color: #52ceff;
+}
+
+.sun {
+    color: #ff6a6a;
 }

@@ -67,13 +67,14 @@
 }
 
 .todolist-items {
+    margin-bottom: 5px;
     border-radius: 18px;
     padding: 10px;
     background-color: #f3f7ff;
-    box-shadow: 5px 5px 10px #e0e2f3;
+    box-shadow: 5px 5px 5px #e0e2f3;
 }
 
-/* 마지막 li가 아닌 것에만 margin bottom 넣어주기 */
+/* 마지막 li가 아닌 것에만 margin bottom 10 */
 .todolist-items:not(.todolist-ul-container :nth-last-child(1)){
     margin-bottom: 10px;
 }
