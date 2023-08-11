@@ -185,6 +185,6 @@ class TodoListService {
 
         // todo 개수 업데이트
         const totalTask = document.querySelector(".total-task");
-        totalTask.innerHTML = this.todoList.length;
+        totalTask.innerHTML = this.completeTodoList.length + this.incompleteTodoList.length;
     }
 }
