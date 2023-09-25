@@ -1,6 +1,8 @@
 # aws_web_basic_todolist_project
 간단한 ToDo List 웹 애플리케이션을 HTML, CSS 및 JavaScript를 활용하여 개발한 바닐라 자바스크립트 프로젝트입니다. 이 애플리케이션은 할 일을 관리하고 필터링하며, 캘린더를 통해 날짜별로 할 일을 저장하는 기능을 제공합니다.
 
+![todolist](https://github.com/mini3100/aws_web_basic_todolist_project/assets/106395179/3cc79230-6e7a-42c8-a011-89318b05f8db)
+
 ## 주요 기능
 
 프로젝트의 주요 기능은 다음과 같습니다:
